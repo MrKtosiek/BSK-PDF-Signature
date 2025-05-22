@@ -15,11 +15,13 @@ from reportlab.lib.pagesizes import letter
 from io import BytesIO
 import psutil
 
+
 def find_pendrive():
     for part in psutil.disk_partitions():
         if 'removable' in part.opts or ('/media' in part.mountpoint or 'usb' in part.device.lower()):
             return part.mountpoint
     return None
+
 
 def load_private_key_from_pendrive(pendrive_path):
     path = os.path.join(pendrive_path, "private_key.enc")
@@ -27,6 +29,7 @@ def load_private_key_from_pendrive(pendrive_path):
         with open(path, "rb") as f:
             return f.read()
     return None
+
 
 def decrypt_private_key(pin, encrypted_private_key):
     key = hashlib.sha256(pin.encode()).digest()
@@ -36,20 +39,19 @@ def decrypt_private_key(pin, encrypted_private_key):
     decrypted = unpad(cipher.decrypt(ciphertext), AES.block_size)
     return rsa.PrivateKey.load_pkcs1(decrypted)
 
+
 def sign_pdf(file_path, private_key):
-    with open(file_path, "rb") as f:
-        pdf_data = f.read()
 
-    # 1. Hash i podpis
-    pdf_hash = hashlib.sha256(pdf_data).digest()
-    signature = rsa.sign(pdf_hash, private_key, "SHA-256")
-    signature_b64 = base64.b64encode(signature).decode("utf-8")
-
-    # 2. Wczytanie PDF
+    # 1. Wczytanie PDF
     reader = PdfReader(file_path)
     writer = PdfWriter()
     for page in reader.pages:
         writer.add_page(page)
+
+    # 2. Hash i podpis
+    pdf_content = b"".join(page.extract_text().encode() for page in reader.pages if page.extract_text())
+    signature = rsa.sign(pdf_content, private_key, "SHA-256")
+    signature_b64 = base64.b64encode(signature).decode("utf-8")
 
     # 3. Zapisujemy podpis w metadanych
     metadata = reader.metadata or {}
@@ -62,6 +64,31 @@ def sign_pdf(file_path, private_key):
         writer.write(f)
 
     return signed_path
+
+
+def check_signature(file_path, key_path):
+
+    # 1. Wczytanie PDF
+    reader = PdfReader(file_path)
+    metadata = reader.metadata or {}
+    pdf_content = b"".join(page.extract_text().encode() for page in reader.pages if page.extract_text())
+
+    # 2. Wczytanie klucza publicznego
+    with open(key_path, "rb") as f:
+        public_key_data = f.read()
+        public_key = rsa.PublicKey.load_pkcs1(public_key_data, format="PEM")
+
+    # 3. Wczytanie i odkodowanie podpisu
+    signature_b64 = metadata.get("/DigitalSignature")
+    signature = base64.b64decode(signature_b64)
+
+    # 4. Weryfikacja podpisu
+    try:
+        rsa.verify(pdf_content, signature, public_key)
+        return True
+    except rsa.VerificationError:
+        return False
+
 
 def main():
     root = ttk.Window(themename="superhero")
@@ -90,9 +117,21 @@ def main():
             pdf_path.set(path)
             pdf_label.config(text=f"Chosen: {os.path.basename(path)}", foreground="green")
 
-    ttk.Button(root, text="Choose PDF file to sign", command=choose_pdf).pack(pady=5)
+    ttk.Button(root, text="Choose PDF file", command=choose_pdf).pack(pady=5)
     pdf_label = ttk.Label(root, text="File not chosen", foreground="gray")
     pdf_label.pack()
+
+    # Wybór klucza publicznego
+    public_key_path = ttk.StringVar()
+    def choose_public_key():
+        path = filedialog.askopenfilename(filetypes=[("PEM files", "*.pem")])
+        if path:
+            public_key_path.set(path)
+            public_key_label.config(text=f"Chosen: {os.path.basename(path)}", foreground="green")
+
+    ttk.Button(root, text="Choose public key", command=choose_public_key).pack(pady=5)
+    public_key_label = ttk.Label(root, text="File not chosen", foreground="gray")
+    public_key_label.pack()
 
     message_label = ttk.Label(root, text="", foreground="red")
     message_label.pack()
@@ -142,7 +181,30 @@ def main():
         except Exception as e:
             message_label.config(text="Error: " + str(e), foreground="red")
 
+    def check_button_action():
+        file_path = pdf_path.get()
+        key_path = public_key_path.get()
+
+        if not file_path:
+            message_label.config(text="Choose PDF file path!", foreground="red")
+            return
+        if not key_path:
+            message_label.config(text="Choose public key file path!", foreground="red")
+            return
+
+        try:
+            signature_valid = check_signature(file_path, key_path)
+        except:
+            message_label.config(text=f"Document signature is invalid: {os.path.basename(file_path)}", foreground="red")
+            return
+
+        if signature_valid:
+            message_label.config(text=f"Document signature is valid: {os.path.basename(file_path)}", foreground="green")
+        else:
+            message_label.config(text=f"Document signature is invalid: {os.path.basename(file_path)}", foreground="red")
+
     ttk.Button(root, text="Sign document", command=sign_button_action, bootstyle=SUCCESS).pack(pady=15)
+    ttk.Button(root, text="Check signature", command=check_button_action, bootstyle=SUCCESS).pack(pady=15)
 
     threading.Thread(target=auto_check_pendrive, daemon=True).start()
     root.mainloop()

@@ -1,8 +1,8 @@
 import os
 import hashlib
 import ttkbootstrap as ttk
+import rsa
 from ttkbootstrap.constants import *
-from Crypto.PublicKey import RSA
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 import psutil
@@ -16,9 +16,9 @@ def generate_rsa_keys():
     @brief Generates a pair of RSA keys (private and public).
     @return Tuple containing private_key and public_key in bytes.
     """
-    key = RSA.generate(4096)
-    private_key = key.export_key()
-    public_key = key.publickey().export_key()
+    (pubkey, privkey) = rsa.newkeys(4096)
+    private_key = privkey.save_pkcs1(format='PEM')
+    public_key = pubkey.save_pkcs1(format='PEM')
     return private_key, public_key
 
 

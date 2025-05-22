@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5aafaeb-28d3-493a-8e2f-afe2c9e76b80" name="Changes" comment="" />
+    <list default="true" id="c5aafaeb-28d3-493a-8e2f-afe2c9e76b80" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generate_keys.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_keys.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/signature_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/signature_app.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,9 +32,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.generate_keys.executor": "Run",
+    "Python.signature_app.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dev-pablo",
+    "git-widget-placeholder": "signature-check",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/Studia/Sem 6/Bezpieczeństwo Systemów Komputerowych/BSK-PDF-Signature",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
