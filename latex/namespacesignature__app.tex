@@ -1,0 +1,81 @@
+\doxysection{signature\+\_\+app Namespace Reference}
+\hypertarget{namespacesignature__app}{}\label{namespacesignature__app}\index{signature\_app@{signature\_app}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacesignature__app_afae984ad42688429419907fec1787963}{find\+\_\+pendrive}} ()
+\item 
+\mbox{\hyperlink{namespacesignature__app_abb2777ae58c4a0cd8114257775356163}{load\+\_\+private\+\_\+key\+\_\+from\+\_\+pendrive}} (pendrive\+\_\+path)
+\item 
+\mbox{\hyperlink{namespacesignature__app_a6cafc75194d3907aad274f680428b73f}{decrypt\+\_\+private\+\_\+key}} (pin, encrypted\+\_\+private\+\_\+key)
+\item 
+\mbox{\hyperlink{namespacesignature__app_a5f8d36628d8b93006cf622c701de186d}{sign\+\_\+pdf}} (file\+\_\+path, private\+\_\+key)
+\item 
+\mbox{\hyperlink{namespacesignature__app_ac1295816ad972242f59770d953db7895}{check\+\_\+signature}} (file\+\_\+path, key\+\_\+path)
+\item 
+\mbox{\hyperlink{namespacesignature__app_ade197b7bf41766138fd68901d1cad7fe}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacesignature__app_ac1295816ad972242f59770d953db7895}\label{namespacesignature__app_ac1295816ad972242f59770d953db7895} 
+\index{signature\_app@{signature\_app}!check\_signature@{check\_signature}}
+\index{check\_signature@{check\_signature}!signature\_app@{signature\_app}}
+\doxysubsubsection{\texorpdfstring{check\_signature()}{check\_signature()}}
+{\footnotesize\ttfamily signature\+\_\+app.\+check\+\_\+signature (\begin{DoxyParamCaption}\item[{}]{file\+\_\+path,  }\item[{}]{key\+\_\+path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Verifies the digital signature of a PDF file using the provided RSA public key.
+@param file_path The path to the signed PDF file.
+@param key_path The path to the RSA public key file (in PEM format) used for verification.
+@return bool: True if the signature is valid, False otherwise.
+\end{DoxyVerb}
+ \Hypertarget{namespacesignature__app_a6cafc75194d3907aad274f680428b73f}\label{namespacesignature__app_a6cafc75194d3907aad274f680428b73f} 
+\index{signature\_app@{signature\_app}!decrypt\_private\_key@{decrypt\_private\_key}}
+\index{decrypt\_private\_key@{decrypt\_private\_key}!signature\_app@{signature\_app}}
+\doxysubsubsection{\texorpdfstring{decrypt\_private\_key()}{decrypt\_private\_key()}}
+{\footnotesize\ttfamily signature\+\_\+app.\+decrypt\+\_\+private\+\_\+key (\begin{DoxyParamCaption}\item[{}]{pin,  }\item[{}]{encrypted\+\_\+private\+\_\+key }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Decrypts an RSA private key using a PIN-derived key.
+@param pin The PIN used to derive the decryption key.
+@param encrypted_private_key The encrypted RSA private key bytes, with the first 16 bytes as the IV.
+@return The decrypted RSA private key object.
+\end{DoxyVerb}
+ \Hypertarget{namespacesignature__app_afae984ad42688429419907fec1787963}\label{namespacesignature__app_afae984ad42688429419907fec1787963} 
+\index{signature\_app@{signature\_app}!find\_pendrive@{find\_pendrive}}
+\index{find\_pendrive@{find\_pendrive}!signature\_app@{signature\_app}}
+\doxysubsubsection{\texorpdfstring{find\_pendrive()}{find\_pendrive()}}
+{\footnotesize\ttfamily signature\+\_\+app.\+find\+\_\+pendrive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Finds the mount point of a connected USB pendrive.
+@return The mount point of the detected USB pendrive, or None if no pendrive is found.
+\end{DoxyVerb}
+ \Hypertarget{namespacesignature__app_abb2777ae58c4a0cd8114257775356163}\label{namespacesignature__app_abb2777ae58c4a0cd8114257775356163} 
+\index{signature\_app@{signature\_app}!load\_private\_key\_from\_pendrive@{load\_private\_key\_from\_pendrive}}
+\index{load\_private\_key\_from\_pendrive@{load\_private\_key\_from\_pendrive}!signature\_app@{signature\_app}}
+\doxysubsubsection{\texorpdfstring{load\_private\_key\_from\_pendrive()}{load\_private\_key\_from\_pendrive()}}
+{\footnotesize\ttfamily signature\+\_\+app.\+load\+\_\+private\+\_\+key\+\_\+from\+\_\+pendrive (\begin{DoxyParamCaption}\item[{}]{pendrive\+\_\+path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Loads an encrypted private key from a connected USB pendrive.
+@param pendrive_path The mount point of the connected USB pendrive.
+@return The contents of the encrypted private key file, or None if the file is not found.
+\end{DoxyVerb}
+ \Hypertarget{namespacesignature__app_ade197b7bf41766138fd68901d1cad7fe}\label{namespacesignature__app_ade197b7bf41766138fd68901d1cad7fe} 
+\index{signature\_app@{signature\_app}!main@{main}}
+\index{main@{main}!signature\_app@{signature\_app}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily signature\+\_\+app.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Initializes the GUI application for PDF signing and signature verification.
+\end{DoxyVerb}
+ \Hypertarget{namespacesignature__app_a5f8d36628d8b93006cf622c701de186d}\label{namespacesignature__app_a5f8d36628d8b93006cf622c701de186d} 
+\index{signature\_app@{signature\_app}!sign\_pdf@{sign\_pdf}}
+\index{sign\_pdf@{sign\_pdf}!signature\_app@{signature\_app}}
+\doxysubsubsection{\texorpdfstring{sign\_pdf()}{sign\_pdf()}}
+{\footnotesize\ttfamily signature\+\_\+app.\+sign\+\_\+pdf (\begin{DoxyParamCaption}\item[{}]{file\+\_\+path,  }\item[{}]{private\+\_\+key }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Digitally signs a PDF file using the provided RSA private key.
+@param file_path The path to the original PDF file to be signed.
+@param private_key The RSA private key used to sign the PDF content.
+@return str: The path to the newly saved, signed PDF file.
+\end{DoxyVerb}
+ 

@@ -17,6 +17,10 @@ import psutil
 
 
 def find_pendrive():
+    """
+    @brief Finds the mount point of a connected USB pendrive.
+    @return The mount point of the detected USB pendrive, or None if no pendrive is found.
+    """
     for part in psutil.disk_partitions():
         if 'removable' in part.opts or ('/media' in part.mountpoint or 'usb' in part.device.lower()):
             return part.mountpoint
@@ -24,6 +28,11 @@ def find_pendrive():
 
 
 def load_private_key_from_pendrive(pendrive_path):
+    """
+    @brief Loads an encrypted private key from a connected USB pendrive.
+    @param pendrive_path The mount point of the connected USB pendrive.
+    @return The contents of the encrypted private key file, or None if the file is not found.
+    """
     path = os.path.join(pendrive_path, "private_key.enc")
     if os.path.exists(path):
         with open(path, "rb") as f:
@@ -32,6 +41,12 @@ def load_private_key_from_pendrive(pendrive_path):
 
 
 def decrypt_private_key(pin, encrypted_private_key):
+    """
+    @brief Decrypts an RSA private key using a PIN-derived key.
+    @param pin The PIN used to derive the decryption key.
+    @param encrypted_private_key The encrypted RSA private key bytes, with the first 16 bytes as the IV.
+    @return The decrypted RSA private key object.
+    """
     key = hashlib.sha256(pin.encode()).digest()
     iv = encrypted_private_key[:16]
     ciphertext = encrypted_private_key[16:]
@@ -41,24 +56,30 @@ def decrypt_private_key(pin, encrypted_private_key):
 
 
 def sign_pdf(file_path, private_key):
-
-    # 1. Wczytanie PDF
+    """
+    @brief Digitally signs a PDF file using the provided RSA private key.
+    @param file_path The path to the original PDF file to be signed.
+    @param private_key The RSA private key used to sign the PDF content.
+    @return str: The path to the newly saved, signed PDF file.
+    """
+    
+    # Read the PDF
     reader = PdfReader(file_path)
     writer = PdfWriter()
     for page in reader.pages:
         writer.add_page(page)
 
-    # 2. Hash i podpis
+    # Hash and signature
     pdf_content = b"".join(page.extract_text().encode() for page in reader.pages if page.extract_text())
     signature = rsa.sign(pdf_content, private_key, "SHA-256")
     signature_b64 = base64.b64encode(signature).decode("utf-8")
 
-    # 3. Zapisujemy podpis w metadanych
+    # Save the signature in metadata
     metadata = reader.metadata or {}
     updated_metadata = {**metadata, "/DigitalSignature": signature_b64}
     writer.add_metadata(updated_metadata)
 
-    # 4. Zapis pliku
+    # Save the file
     signed_path = file_path.replace(".pdf", "_signed.pdf")
     with open(signed_path, "wb") as f:
         writer.write(f)
@@ -67,22 +88,28 @@ def sign_pdf(file_path, private_key):
 
 
 def check_signature(file_path, key_path):
-
-    # 1. Wczytanie PDF
+    """
+    @brief Verifies the digital signature of a PDF file using the provided RSA public key.
+    @param file_path The path to the signed PDF file.
+    @param key_path The path to the RSA public key file (in PEM format) used for verification.
+    @return bool: True if the signature is valid, False otherwise.
+    """
+    
+    # Read the PDF
     reader = PdfReader(file_path)
     metadata = reader.metadata or {}
     pdf_content = b"".join(page.extract_text().encode() for page in reader.pages if page.extract_text())
 
-    # 2. Wczytanie klucza publicznego
+    # Read the public key
     with open(key_path, "rb") as f:
         public_key_data = f.read()
         public_key = rsa.PublicKey.load_pkcs1(public_key_data, format="PEM")
 
-    # 3. Wczytanie i odkodowanie podpisu
+    # Read the signature
     signature_b64 = metadata.get("/DigitalSignature")
     signature = base64.b64decode(signature_b64)
 
-    # 4. Weryfikacja podpisu
+    # Verify signature
     try:
         rsa.verify(pdf_content, signature, public_key)
         return True
@@ -91,6 +118,9 @@ def check_signature(file_path, key_path):
 
 
 def main():
+    """
+    @brief Initializes the GUI application for PDF signing and signature verification.
+    """
     root = ttk.Window(themename="superhero")
     root.title("Digital Signature")
     root.geometry("800x500")
@@ -109,7 +139,7 @@ def main():
     pendrive_status = ttk.Label(pendrive_frame, text="Checking...", font=("Arial", 10))
     pendrive_status.pack(side=TOP)
 
-    # Wybór pliku
+    # Select file
     pdf_path = ttk.StringVar()
     def choose_pdf():
         path = filedialog.askopenfilename(filetypes=[("PDF files", "*.pdf")])
@@ -121,7 +151,7 @@ def main():
     pdf_label = ttk.Label(root, text="File not chosen", foreground="gray")
     pdf_label.pack()
 
-    # Wybór klucza publicznego
+    # Select public key
     public_key_path = ttk.StringVar()
     def choose_public_key():
         path = filedialog.askopenfilename(filetypes=[("PEM files", "*.pem")])

@@ -5,9 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5aafaeb-28d3-493a-8e2f-afe2c9e76b80" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generate_keys.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_keys.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/dir_68267d1309a1af8e8297ef4c3efbcdba.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/dir_68267d1309a1af8e8297ef4c3efbcdba.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/doxygen.css" beforeDir="false" afterPath="$PROJECT_DIR$/html/doxygen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/dynsections.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/dynsections.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/files.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/files.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/generate__keys_8py.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/generate__keys_8py.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacegenerate__keys.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacegenerate__keys.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacemembers.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacemembers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacemembers_func.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacemembers_func.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespaces.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespaces.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_0.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_1.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_3.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_0.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_1.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_3.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/searchdata.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/searchdata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/tabs.css" beforeDir="false" afterPath="$PROJECT_DIR$/html/tabs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/dir_68267d1309a1af8e8297ef4c3efbcdba.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/dir_68267d1309a1af8e8297ef4c3efbcdba.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/files.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/files.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/generate__keys_8py.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/generate__keys_8py.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/namespacegenerate__keys.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/namespacegenerate__keys.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/namespaces.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/namespaces.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/refman.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/refman.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/signature_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/signature_app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +61,7 @@
     "Python.signature_app.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "signature-check",
+    "git-widget-placeholder": "docs",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/Studia/Sem 6/Bezpieczeństwo Systemów Komputerowych/BSK-PDF-Signature",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
@@ -58,5 +84,22 @@
       <updated>1741553749816</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

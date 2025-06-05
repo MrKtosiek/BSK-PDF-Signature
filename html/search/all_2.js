@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_0',['main',['../namespacegenerate__keys.html#a5b26af04231262dfae58c35cd7236834',1,'generate_keys']]]
+  ['encrypt_5fprivate_5fkey_5fwith_5fpin_0',['encrypt_private_key_with_pin',['../namespacegenerate__keys.html#a12fb5ad6887911999291cc905db8354c',1,'generate_keys']]]
 ];
