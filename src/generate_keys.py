@@ -12,7 +12,7 @@ import time
 
 
 def generate_rsa_keys():
-    """
+    """!
     @brief Generates a pair of RSA keys (private and public).
     @return Tuple containing private_key and public_key in bytes.
     """
@@ -23,7 +23,7 @@ def generate_rsa_keys():
 
 
 def encrypt_private_key_with_pin(private_key, pin):
-    """
+    """!
     @brief Encrypts the private key using AES encryption with a user-defined PIN.
     @param private_key The private RSA key in bytes.
     @param pin The user-defined PIN for encryption.
@@ -35,7 +35,7 @@ def encrypt_private_key_with_pin(private_key, pin):
 
 
 def save_keys(encrypted_private_key, public_key, pendrive_path, public_key_path, message_label):
-    """
+    """!
     @brief Saves encrypted private key to pendrive and public key to specified location.
     @param encrypted_private_key The encrypted private key in bytes.
     @param public_key The public key in bytes.
@@ -58,7 +58,7 @@ def save_keys(encrypted_private_key, public_key, pendrive_path, public_key_path,
 
 
 def find_pendrive():
-    """
+    """!
     @brief Finds the first removable drive (pendrive) connected to the system.
     @return Path to the pendrive or None if not found.
     """
@@ -70,7 +70,7 @@ def find_pendrive():
 
 
 def main():
-    """
+    """!
     @brief Initializes the GUI application for key generation and saving.
     """
     root = ttk.Window(themename="superhero")
@@ -108,7 +108,7 @@ def main():
     message_label.pack(pady=10)
 
     def check_pendrive():
-        """
+        """!
         @brief Checks for pendrive presence and updates status.
         @return Path to pendrive if found, None otherwise
         """
@@ -121,7 +121,7 @@ def main():
             return None
 
     def auto_check_pendrive():
-        """
+        """!
         @brief Automatically checks for pendrive every second
         """
         while True:
@@ -129,7 +129,7 @@ def main():
             time.sleep(1)
 
     def generate_and_save_keys():
-        """
+        """!
         @brief Handles the process of generating and saving RSA keys.
         """
         pin = pin_entry.get()

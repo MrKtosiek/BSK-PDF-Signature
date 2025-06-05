@@ -17,7 +17,7 @@ import psutil
 
 
 def find_pendrive():
-    """
+    """!
     @brief Finds the mount point of a connected USB pendrive.
     @return The mount point of the detected USB pendrive, or None if no pendrive is found.
     """
@@ -28,7 +28,7 @@ def find_pendrive():
 
 
 def load_private_key_from_pendrive(pendrive_path):
-    """
+    """!
     @brief Loads an encrypted private key from a connected USB pendrive.
     @param pendrive_path The mount point of the connected USB pendrive.
     @return The contents of the encrypted private key file, or None if the file is not found.
@@ -41,7 +41,7 @@ def load_private_key_from_pendrive(pendrive_path):
 
 
 def decrypt_private_key(pin, encrypted_private_key):
-    """
+    """!
     @brief Decrypts an RSA private key using a PIN-derived key.
     @param pin The PIN used to derive the decryption key.
     @param encrypted_private_key The encrypted RSA private key bytes, with the first 16 bytes as the IV.
@@ -56,7 +56,7 @@ def decrypt_private_key(pin, encrypted_private_key):
 
 
 def sign_pdf(file_path, private_key):
-    """
+    """!
     @brief Digitally signs a PDF file using the provided RSA private key.
     @param file_path The path to the original PDF file to be signed.
     @param private_key The RSA private key used to sign the PDF content.
@@ -88,7 +88,7 @@ def sign_pdf(file_path, private_key):
 
 
 def check_signature(file_path, key_path):
-    """
+    """!
     @brief Verifies the digital signature of a PDF file using the provided RSA public key.
     @param file_path The path to the signed PDF file.
     @param key_path The path to the RSA public key file (in PEM format) used for verification.
@@ -118,7 +118,7 @@ def check_signature(file_path, key_path):
 
 
 def main():
-    """
+    """!
     @brief Initializes the GUI application for PDF signing and signature verification.
     """
     root = ttk.Window(themename="superhero")
@@ -168,6 +168,10 @@ def main():
 
     detected_pendrive = {"path": None}
     def check_pendrive():
+        """!
+        @brief Checks for pendrive presence and updates status.
+        @return Path to pendrive if found, None otherwise
+        """
         path = find_pendrive()
         if path:
             pendrive_status.config(text=f"Detected: {path}", foreground="green")
@@ -177,11 +181,17 @@ def main():
             detected_pendrive["path"] = None
 
     def auto_check_pendrive():
+        """!
+        @brief Automatically checks for pendrive every second
+        """
         while True:
             check_pendrive()
             time.sleep(1)
 
     def sign_button_action():
+        """!
+        @brief Handles the signing action triggered by the sign button in the GUI.
+        """
         pin = pin_entry.get()
         pendrive_path = detected_pendrive["path"]
         file_path = pdf_path.get()
@@ -212,6 +222,10 @@ def main():
             message_label.config(text="Error: " + str(e), foreground="red")
 
     def check_button_action():
+        
+        """!
+        @brief Handles the action of verifying a PDF's digital signature in the GUI.
+        """
         file_path = pdf_path.get()
         key_path = public_key_path.get()
 

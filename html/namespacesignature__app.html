@@ -78,16 +78,22 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:afae984ad42688429419907fec1787963" id="r_afae984ad42688429419907fec1787963"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesignature__app.html#afae984ad42688429419907fec1787963">find_pendrive</a> ()</td></tr>
+<tr class="memdesc:afae984ad42688429419907fec1787963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the mount point of a connected USB pendrive.  <br /></td></tr>
 <tr class="separator:afae984ad42688429419907fec1787963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb2777ae58c4a0cd8114257775356163" id="r_abb2777ae58c4a0cd8114257775356163"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesignature__app.html#abb2777ae58c4a0cd8114257775356163">load_private_key_from_pendrive</a> (pendrive_path)</td></tr>
+<tr class="memdesc:abb2777ae58c4a0cd8114257775356163"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads an encrypted private key from a connected USB pendrive.  <br /></td></tr>
 <tr class="separator:abb2777ae58c4a0cd8114257775356163"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cafc75194d3907aad274f680428b73f" id="r_a6cafc75194d3907aad274f680428b73f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesignature__app.html#a6cafc75194d3907aad274f680428b73f">decrypt_private_key</a> (pin, encrypted_private_key)</td></tr>
+<tr class="memdesc:a6cafc75194d3907aad274f680428b73f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypts an RSA private key using a PIN-derived key.  <br /></td></tr>
 <tr class="separator:a6cafc75194d3907aad274f680428b73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f8d36628d8b93006cf622c701de186d" id="r_a5f8d36628d8b93006cf622c701de186d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesignature__app.html#a5f8d36628d8b93006cf622c701de186d">sign_pdf</a> (file_path, private_key)</td></tr>
+<tr class="memdesc:a5f8d36628d8b93006cf622c701de186d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Digitally signs a PDF file using the provided RSA private key.  <br /></td></tr>
 <tr class="separator:a5f8d36628d8b93006cf622c701de186d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1295816ad972242f59770d953db7895" id="r_ac1295816ad972242f59770d953db7895"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesignature__app.html#ac1295816ad972242f59770d953db7895">check_signature</a> (file_path, key_path)</td></tr>
+<tr class="memdesc:ac1295816ad972242f59770d953db7895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifies the digital signature of a PDF file using the provided RSA public key.  <br /></td></tr>
 <tr class="separator:ac1295816ad972242f59770d953db7895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade197b7bf41766138fd68901d1cad7fe" id="r_ade197b7bf41766138fd68901d1cad7fe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesignature__app.html#ade197b7bf41766138fd68901d1cad7fe">main</a> ()</td></tr>
+<tr class="memdesc:ade197b7bf41766138fd68901d1cad7fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the GUI application for PDF signing and signature verification.  <br /></td></tr>
 <tr class="separator:ade197b7bf41766138fd68901d1cad7fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -116,11 +122,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Verifies the digital signature of a PDF file using the provided RSA public key.
-@param file_path The path to the signed PDF file.
-@param key_path The path to the RSA public key file (in PEM format) used for verification.
-@return bool: True if the signature is valid, False otherwise.
-</pre> 
+
+<p>Verifies the digital signature of a PDF file using the provided RSA public key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file_path</td><td>The path to the signed PDF file. </td></tr>
+    <tr><td class="paramname">key_path</td><td>The path to the RSA public key file (in PEM format) used for verification. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool: True if the signature is valid, False otherwise. </dd></dl>
+
 </div>
 </div>
 <a id="a6cafc75194d3907aad274f680428b73f" name="a6cafc75194d3907aad274f680428b73f"></a>
@@ -148,11 +160,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Decrypts an RSA private key using a PIN-derived key.
-@param pin The PIN used to derive the decryption key.
-@param encrypted_private_key The encrypted RSA private key bytes, with the first 16 bytes as the IV.
-@return The decrypted RSA private key object.
-</pre> 
+
+<p>Decrypts an RSA private key using a PIN-derived key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>The PIN used to derive the decryption key. </td></tr>
+    <tr><td class="paramname">encrypted_private_key</td><td>The encrypted RSA private key bytes, with the first 16 bytes as the IV. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The decrypted RSA private key object. </dd></dl>
+
 </div>
 </div>
 <a id="afae984ad42688429419907fec1787963" name="afae984ad42688429419907fec1787963"></a>
@@ -169,9 +187,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Finds the mount point of a connected USB pendrive.
-@return The mount point of the detected USB pendrive, or None if no pendrive is found.
-</pre> 
+
+<p>Finds the mount point of a connected USB pendrive. </p>
+<dl class="section return"><dt>Returns</dt><dd>The mount point of the detected USB pendrive, or None if no pendrive is found. </dd></dl>
+
 </div>
 </div>
 <a id="abb2777ae58c4a0cd8114257775356163" name="abb2777ae58c4a0cd8114257775356163"></a>
@@ -189,10 +208,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Loads an encrypted private key from a connected USB pendrive.
-@param pendrive_path The mount point of the connected USB pendrive.
-@return The contents of the encrypted private key file, or None if the file is not found.
-</pre> 
+
+<p>Loads an encrypted private key from a connected USB pendrive. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pendrive_path</td><td>The mount point of the connected USB pendrive. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The contents of the encrypted private key file, or None if the file is not found. </dd></dl>
+
 </div>
 </div>
 <a id="ade197b7bf41766138fd68901d1cad7fe" name="ade197b7bf41766138fd68901d1cad7fe"></a>
@@ -209,8 +234,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Initializes the GUI application for PDF signing and signature verification.
-</pre> 
+
+<p>Initializes the GUI application for PDF signing and signature verification. </p>
+
 </div>
 </div>
 <a id="a5f8d36628d8b93006cf622c701de186d" name="a5f8d36628d8b93006cf622c701de186d"></a>
@@ -238,11 +264,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Digitally signs a PDF file using the provided RSA private key.
-@param file_path The path to the original PDF file to be signed.
-@param private_key The RSA private key used to sign the PDF content.
-@return str: The path to the newly saved, signed PDF file.
-</pre> 
+
+<p>Digitally signs a PDF file using the provided RSA private key. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file_path</td><td>The path to the original PDF file to be signed. </td></tr>
+    <tr><td class="paramname">private_key</td><td>The RSA private key used to sign the PDF content. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>str: The path to the newly saved, signed PDF file. </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->
