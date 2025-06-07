@@ -4,13 +4,15 @@
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{namespacegenerate__keys_a19767ca72fa505309bf1df1c011493e9}{generate\+\_\+rsa\+\_\+keys}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Generates a pair of RSA keys (private and public). \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacegenerate__keys_a12fb5ad6887911999291cc905db8354c}{encrypt\+\_\+private\+\_\+key\+\_\+with\+\_\+pin}} (private\+\_\+key, pin)
-\item 
-\mbox{\hyperlink{namespacegenerate__keys_a746c56f988281b8832d79190268209ce}{save\+\_\+keys\+\_\+to\+\_\+pendrive}} (encrypted\+\_\+private\+\_\+key, public\+\_\+key, pendrive\+\_\+path, message\+\_\+label)
-\item 
+\begin{DoxyCompactList}\small\item\em Encrypts the private key using AES encryption with a user-\/defined PIN. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacegenerate__keys_aeb01474ecaf93e9a7e4d5d752e72b648}{save\+\_\+keys}} (encrypted\+\_\+private\+\_\+key, public\+\_\+key, pendrive\+\_\+path, public\+\_\+key\+\_\+path, message\+\_\+label)
+\begin{DoxyCompactList}\small\item\em Saves encrypted private key to pendrive and public key to specified location. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacegenerate__keys_ab03188c90236b715697d3e4437f65456}{find\+\_\+pendrive}} ()
+\begin{DoxyCompactList}\small\item\em Finds the first removable drive (pendrive) connected to the system. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespacegenerate__keys_a5b26af04231262dfae58c35cd7236834}{main}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Initializes the GUI application for key generation and saving. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -20,38 +22,76 @@
 \doxysubsubsection{\texorpdfstring{encrypt\_private\_key\_with\_pin()}{encrypt\_private\_key\_with\_pin()}}
 {\footnotesize\ttfamily generate\+\_\+keys.\+encrypt\+\_\+private\+\_\+key\+\_\+with\+\_\+pin (\begin{DoxyParamCaption}\item[{}]{private\+\_\+key,  }\item[{}]{pin }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@brief Encrypts the private key using AES encryption with a user-defined PIN.
-@param private_key The private RSA key in bytes.
-@param pin The user-defined PIN for encryption.
-@return Encrypted private key with an IV prepended.
-\end{DoxyVerb}
- \Hypertarget{namespacegenerate__keys_a19767ca72fa505309bf1df1c011493e9}\label{namespacegenerate__keys_a19767ca72fa505309bf1df1c011493e9} 
+
+
+Encrypts the private key using AES encryption with a user-\/defined PIN. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em private\+\_\+key} & The private RSA key in bytes. \\
+\hline
+{\em pin} & The user-\/defined PIN for encryption. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Encrypted private key with an IV prepended. 
+\end{DoxyReturn}
+\Hypertarget{namespacegenerate__keys_ab03188c90236b715697d3e4437f65456}\label{namespacegenerate__keys_ab03188c90236b715697d3e4437f65456} 
+\index{generate\_keys@{generate\_keys}!find\_pendrive@{find\_pendrive}}
+\index{find\_pendrive@{find\_pendrive}!generate\_keys@{generate\_keys}}
+\doxysubsubsection{\texorpdfstring{find\_pendrive()}{find\_pendrive()}}
+{\footnotesize\ttfamily generate\+\_\+keys.\+find\+\_\+pendrive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finds the first removable drive (pendrive) connected to the system. 
+
+\begin{DoxyReturn}{Returns}
+Path to the pendrive or None if not found. 
+\end{DoxyReturn}
+\Hypertarget{namespacegenerate__keys_a19767ca72fa505309bf1df1c011493e9}\label{namespacegenerate__keys_a19767ca72fa505309bf1df1c011493e9} 
 \index{generate\_keys@{generate\_keys}!generate\_rsa\_keys@{generate\_rsa\_keys}}
 \index{generate\_rsa\_keys@{generate\_rsa\_keys}!generate\_keys@{generate\_keys}}
 \doxysubsubsection{\texorpdfstring{generate\_rsa\_keys()}{generate\_rsa\_keys()}}
 {\footnotesize\ttfamily generate\+\_\+keys.\+generate\+\_\+rsa\+\_\+keys (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@brief Generates a pair of RSA keys (private and public).
-@return Tuple containing private_key and public_key in bytes.
-\end{DoxyVerb}
- \Hypertarget{namespacegenerate__keys_a5b26af04231262dfae58c35cd7236834}\label{namespacegenerate__keys_a5b26af04231262dfae58c35cd7236834} 
+
+
+Generates a pair of RSA keys (private and public). 
+
+\begin{DoxyReturn}{Returns}
+Tuple containing private\+\_\+key and public\+\_\+key in bytes. 
+\end{DoxyReturn}
+\Hypertarget{namespacegenerate__keys_a5b26af04231262dfae58c35cd7236834}\label{namespacegenerate__keys_a5b26af04231262dfae58c35cd7236834} 
 \index{generate\_keys@{generate\_keys}!main@{main}}
 \index{main@{main}!generate\_keys@{generate\_keys}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily generate\+\_\+keys.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@brief Initializes the GUI application for key generation and saving.
-\end{DoxyVerb}
- \Hypertarget{namespacegenerate__keys_a746c56f988281b8832d79190268209ce}\label{namespacegenerate__keys_a746c56f988281b8832d79190268209ce} 
-\index{generate\_keys@{generate\_keys}!save\_keys\_to\_pendrive@{save\_keys\_to\_pendrive}}
-\index{save\_keys\_to\_pendrive@{save\_keys\_to\_pendrive}!generate\_keys@{generate\_keys}}
-\doxysubsubsection{\texorpdfstring{save\_keys\_to\_pendrive()}{save\_keys\_to\_pendrive()}}
-{\footnotesize\ttfamily generate\+\_\+keys.\+save\+\_\+keys\+\_\+to\+\_\+pendrive (\begin{DoxyParamCaption}\item[{}]{encrypted\+\_\+private\+\_\+key,  }\item[{}]{public\+\_\+key,  }\item[{}]{pendrive\+\_\+path,  }\item[{}]{message\+\_\+label }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}@brief Saves encrypted private and public keys to a specified pendrive path.
-@param encrypted_private_key The encrypted private key in bytes.
-@param public_key The public key in bytes.
-@param pendrive_path The file path of the USB drive.
-@param message_label The GUI label to display status messages.
-\end{DoxyVerb}
- 
+
+Initializes the GUI application for key generation and saving. 
+
+\Hypertarget{namespacegenerate__keys_aeb01474ecaf93e9a7e4d5d752e72b648}\label{namespacegenerate__keys_aeb01474ecaf93e9a7e4d5d752e72b648} 
+\index{generate\_keys@{generate\_keys}!save\_keys@{save\_keys}}
+\index{save\_keys@{save\_keys}!generate\_keys@{generate\_keys}}
+\doxysubsubsection{\texorpdfstring{save\_keys()}{save\_keys()}}
+{\footnotesize\ttfamily generate\+\_\+keys.\+save\+\_\+keys (\begin{DoxyParamCaption}\item[{}]{encrypted\+\_\+private\+\_\+key,  }\item[{}]{public\+\_\+key,  }\item[{}]{pendrive\+\_\+path,  }\item[{}]{public\+\_\+key\+\_\+path,  }\item[{}]{message\+\_\+label }\end{DoxyParamCaption})}
+
+
+
+Saves encrypted private key to pendrive and public key to specified location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em encrypted\+\_\+private\+\_\+key} & The encrypted private key in bytes. \\
+\hline
+{\em public\+\_\+key} & The public key in bytes. \\
+\hline
+{\em pendrive\+\_\+path} & The path to the USB drive for private key. \\
+\hline
+{\em public\+\_\+key\+\_\+path} & The path to save public key. \\
+\hline
+{\em message\+\_\+label} & The GUI label to display status messages. \\
+\hline
+\end{DoxyParams}

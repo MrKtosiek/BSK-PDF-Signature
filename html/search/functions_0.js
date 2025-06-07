@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['encrypt_5fprivate_5fkey_5fwith_5fpin_0',['encrypt_private_key_with_pin',['../namespacegenerate__keys.html#a12fb5ad6887911999291cc905db8354c',1,'generate_keys']]]
+  ['check_5fsignature_0',['check_signature',['../namespacesignature__app.html#ac1295816ad972242f59770d953db7895',1,'signature_app']]]
 ];
